@@ -13,7 +13,7 @@ const app = express();
 const server = createServer(app);
 const io = new Server(server, {
     cors: {
-        origin: process.env.FE_PORT, // This is the frontend's origin
+        origin: process.env.FE_PORT,
         methods: ["GET", "POST"]
     },
     connectionStateRecovery: {}
