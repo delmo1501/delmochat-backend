@@ -13,8 +13,8 @@ const app = express();
 const server = createServer(app);
 const io = new Server(server, {
     cors: {
-        origin: process.env.FE_PORT,
-        methods: ["GET", "POST"] // initializing
+        origin: process.env.FRONTEND_URL,
+        methods: ["GET", "POST"]
     },
     connectionStateRecovery: {}
 });
@@ -62,7 +62,7 @@ io.on('connection', async (socket) => {
             console.error(e);
             return;
         }
-        io.emit('chat message', msg, result.lastInsertRowid.toString(), username);
+        socket.broadcast.emit('chat message', msg, result.lastInsertRowid.toString(), username);
     });
 
     if (!socket.recovered) {
