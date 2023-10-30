@@ -1,6 +1,7 @@
 import express from 'express';
 import logger from 'morgan';
 import dotenv from 'dotenv';
+import path from 'path';
 import { createClient } from '@libsql/client';
 import { Server } from 'socket.io';
 import { createServer } from 'http';
@@ -86,7 +87,6 @@ app.use(logger('dev'));
 // If you're serving the React frontend using the same Express server:
 app.use(express.static('../build'));
 
-const path = require('path');
 app.get('/', (req, res) => {
     res.sendFile(path.resolve(__dirname, '../delmochat/build/index.html'));
 });
