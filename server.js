@@ -1,7 +1,6 @@
 import express from 'express';
 import logger from 'morgan';
 import dotenv from 'dotenv';
-import path from 'path';
 import { createClient } from '@libsql/client';
 import { Server } from 'socket.io';
 import { createServer } from 'http';
