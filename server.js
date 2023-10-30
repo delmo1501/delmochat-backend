@@ -88,7 +88,7 @@ app.use(logger('dev'));
 app.use(express.static('../build'));
 
 app.get('/', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../delmochat/build/index.html'));
+    res.send('hello hello');
 });
 
 server.listen(PORT, () => {
