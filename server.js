@@ -4,8 +4,6 @@ import dotenv from 'dotenv';
 import { createClient } from '@libsql/client';
 import { Server } from 'socket.io';
 import { createServer } from 'http';
-import { dirname } from 'path';
-import { fileURLToPath } from 'url';
 
 dotenv.config();
 
@@ -85,10 +83,8 @@ io.on('connection', async (socket) => {
 
 app.use(logger('dev'));
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-app.use(express.static(__dirname + '/build'));
+// If you're serving the React frontend using the same Express server:
+app.use(express.static('../build'));
 
 app.get('/', (req, res) => {
     res.sendFile(process.cwd() + '../build/index.html');
