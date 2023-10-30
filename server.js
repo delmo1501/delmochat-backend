@@ -85,11 +85,12 @@ io.on('connection', async (socket) => {
 app.use(logger('dev'));
 
 // If you're serving the React frontend using the same Express server:
-app.use(express.static('../build'));
+app.use(express.static(path.join(__dirname, '../delmochat/build')));
 
 app.get('/', (req, res) => {
-    res.send('hello hello');
+    res.sendFile(path.join(__dirname, '../delmochat-frontend/build', 'index.html'));
 });
+
 
 server.listen(PORT, () => {
     console.log('server running');
