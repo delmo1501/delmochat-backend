@@ -16,7 +16,7 @@ const app = express();
 const server = createServer(app);
 const io = new Server(server, {
     cors: {
-        origin: 'https://majestic-brioche-96b829.netlify.app/',
+        origin: '*',
         methods: ["GET", "POST"]
     },
     connectionStateRecovery: {}
