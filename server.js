@@ -2,6 +2,7 @@ import express from 'express';
 import logger from 'morgan';
 import dotenv from 'dotenv';
 import path from 'path';
+import { fileURLToPath } from 'url';
 import { createClient } from '@libsql/client';
 import { Server } from 'socket.io';
 import { createServer } from 'http';
@@ -85,7 +86,11 @@ io.on('connection', async (socket) => {
 app.use(logger('dev'));
 
 // If you're serving the React frontend using the same Express server:
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 app.use(express.static(path.join(__dirname, '../delmochat/build')));
+
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../delmochat-frontend/build', 'index.html'));
