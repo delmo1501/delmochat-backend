@@ -1,15 +1,15 @@
 import express from 'express';
 import logger from 'morgan';
 import dotenv from 'dotenv';
-import path from 'path';
 import { fileURLToPath } from 'url';
+import path from 'path';
 import { createClient } from '@libsql/client';
 import { Server } from 'socket.io';
 import { createServer } from 'http';
 
 dotenv.config();
 
-const PORT = process.env.PORT ?? 3000;
+const PORT =  process.env.FRONTEND_URL;
 
 const app = express();
 const server = createServer(app);
