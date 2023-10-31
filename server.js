@@ -1,6 +1,7 @@
 import express from 'express';
 import logger from 'morgan';
 import dotenv from 'dotenv';
+import cors from 'cors';
 import { fileURLToPath } from 'url';
 import path from 'path';
 import { createClient } from '@libsql/client';
@@ -88,6 +89,10 @@ app.use(logger('dev'));
 // If you're serving the React frontend using the same Express server:
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+app.use(cors({
+    origin: 'https://majestic-brioche-96b829.netlify.app',
+  }));
 
 app.use(express.static(path.join(__dirname, '../delmochat/build')));
 
