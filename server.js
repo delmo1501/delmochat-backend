@@ -16,7 +16,7 @@ const app = express();
 const server = createServer(app);
 const io = new Server(server, {
     cors: {
-        origin: process.env.FRONTEND_URL,
+        origin: "https://majestic-brioche-96b829.netlify.app/",
         methods: ["GET", "POST"]
     },
     connectionStateRecovery: {}
@@ -90,9 +90,6 @@ app.use(logger('dev'));
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-app.use(cors({
-    origin: 'https://majestic-brioche-96b829.netlify.app',
-  }));
 
 app.use(express.static(path.join(__dirname, '../delmochat/build')));
 
