@@ -65,7 +65,7 @@ io.on('connection', async (socket) => {
             console.error(e);
             return;
         }
-        socket.broadcast.emit('chat message', msg, result.lastInsertRowid.toString(), username);
+        io.emit('chat message', msg, result.lastInsertRowid.toString(), username);
     });
 
     if (!socket.recovered) {
